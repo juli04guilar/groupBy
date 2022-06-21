@@ -1,5 +1,5 @@
 {
-  "name": "group_by",
+  "name": "groupjs_by",
   "version": "1.0.0",
   "description": "Group an array of objects by property name",
   "main": "index.js",

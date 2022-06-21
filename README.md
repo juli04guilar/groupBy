@@ -4,13 +4,14 @@ GroupBy is a Node library for grouping array of objects into the same category, 
 
 ## Installation
 
-Use the package manager to install GroupBy.
+Use the package manager to install groupjs_by.
 
 
 ## Usage
 
 ```node
-const groups = require(`GroupByJs`)
+const group = require('groupjs_by');
+
 
 # returns 'grouped' objects by columnName
 `const data = [{ id: 1, category : 'fruits', name : 'apple', price: 10 }, 
@@ -20,20 +21,25 @@ const groups = require(`GroupByJs`)
 groups.group(data,'category')
 
 # returns 'sum' of price column for each category
-groups.sum('totalSum','price')
+group.GroupBy(data,'category').sum('totalSum','price')
 
 # returns 'avg' price for each category, it support a third argument as number of decimals formatted by default its 2 
-groups.avg('totalAvg','price')
+group.GroupBy(data,'category').avg('totalAvg','price')
 
 # returns 'max'  price  for each category 
-groups.max('maxPrice','price')
+group.GroupBy(data,'category').max('maxPrice','price')
 
 # returns 'min'  price for each category 
-groups.min('maxPrice','price')
+group.GroupBy(data,'category').min('maxPrice','price')
 
 # countDistinct
 # returns 'count' of distinct prices
-groups.min('distinctPrices','price')
+group.GroupBy(data,'category').min('distinctPrices','price')
+
+# Chaining 
+groupjs_by support chaining operations
+group.GroupBy(data,'category').avg('totalAvg','price').sum('totalPrice','price').min('minPrice','price');
+
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
