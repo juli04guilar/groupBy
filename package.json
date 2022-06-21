@@ -1,7 +1,7 @@
 {
   "name": "groupjs_by",
-  "version": "1.0.1",
-  "description": "Group an array of objects by property name",
+  "version": "1.0.3",
+  "description": "The Javascript library used for aggregate on array of objects",
   "main": "index.js",
   "repository": "https://github.com/juli04guilar/groupBy.git",
   "author": "Julio Aguilar",
@@ -24,5 +24,17 @@
         "statements": -10
       }
     }
-  }
+  },
+  "keywords": [
+    "aggregate",
+    "javascript",
+    "sum",
+    "min",
+    "max",
+    "avg",
+    "groupBy",
+    "array",
+    "agrupar",
+    "sumar"
+  ]
 }
