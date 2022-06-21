@@ -1,6 +1,6 @@
 # GroupByJs
 
-GroupBy is a Node library for grouping array of objects into the same category, it support sum, avg, max, min , countDistinct
+GroupBy is a Node library for grouping array of objects using value of columnName passed as a parameter , it support sum, avg, max, min , countDistinct as well chaining operations
 
 ## Installation
 
@@ -9,42 +9,141 @@ Use the package manager to install groupjs_by.
 
 ## Usage
 
-```node
+# sum(alias,columnName)
+type | Parameters | description
+--- | --- | --- 
+string | alias  | alias for the agreggation sum 
+string | columnName   | name of the column to perform the aggregation 
+    
+## example : 
+`const list =  [ { category: 'animal', name: 'lion', weight: 80 }, { category: 'animal', name : 'panter', weight: 100  } ]
+`
+```
 const group = require('groupjs_by');
+console.log(group.GroupBy(data,'category').sum('animalWeight','weight').data);
+// will print out
+{
+    animal:{
+        items :  [ 
+            { category: 'animal', name: 'lion', weight: 80 },
+            { category: 'animal', name : 'panter', weight: 100 }
+        ]
+        animalWeight: 180
+    }
+}
+```
+# min(alias,columnName)
+Operation | Parameters | description 
+--- | --- | --- 
+string | alias  | alias for the agreggation sum 
+string | columnName   | name of the column to get the min value
+    
+## example : 
+`const list =  [ { category: 'animal', name: 'lion', weight: 80 }, { category: 'animal', name : 'panter', weight: 100  } ]
+`
+```
+const group = require('groupjs_by');
+console.log(group.GroupBy(data,'category').min('minWeight','weight').data);
+// will print out
+{
+    animal:{
+        items :  [ 
+            { category: 'animal', name: 'lion', weight: 80 },
+            { category: 'animal', name : 'panter', weight: 100 }
+        ]
+        minWeight: 80
+    }
+}
+```
+# max(alias,ColumnName)
+Operation | Parameters | description 
+--- | --- | --- 
+string | alias  | alias for the agreggation sum 
+string | columnName   | name of the column to get the max value 
+    
+## example : 
+`const list =  [ { category: 'animal', name: 'lion', weight: 80 }, { category: 'animal', name : 'panter', weight: 100  } ]
+`
+```
+const group = require('groupjs_by');
+console.log(group.GroupBy(data,'category').max('maxWeight','weight').data);
+// will print out
+{
+    animal:{
+        items :  [ 
+            { category: 'animal', name: 'lion', weight: 80 },
+            { category: 'animal', name : 'panter', weight: 100 }
+        ]
+        maxWeight: 100
+    }
+}
+```
+# avg(alias,columnName,decimals)
+Operation | Parameters | description 
+--- | --- | --- 
+string | alias  | alias for the agreggation sum 
+string | columnName   | name of the column to get to perform the avg
+int | decimals   | The number of decimals to format the float avg value, by default 2
+    
+## example : 
+`const list =  [ { category: 'animal', name: 'lion', weight: 80 }, { category: 'animal', name : 'panter', weight: 100  } ]
+`
+```
+const group = require('groupjs_by');
+console.log(group.GroupBy(data,'category').avg('avgWeight','weight').data);
+// will print out
+{
+    animal:{
+        items :  [ 
+            { category: 'animal', name: 'lion', weight: 80 },
+            { category: 'animal', name : 'panter', weight: 100 }
+        ]
+        avgWeight: '90.00'
+    }
+}
+```
+# distinctCount(alias,columnName)
+Operation | Parameters | description 
+--- | --- | --- 
+string | alias  | alias for the agreggation sum 
+string | columnName   | name of the column to get to perform counting
 
+    
+## example : 
+`const list =  [ { category: 'animal', name: 'lion', weight: 80 }, { category: 'animal', name : 'panter', weight: 100  } ]
+`
+```
+const group = require('groupjs_by');
+console.log(group.GroupBy(data,'category').distinctCount('distinctAnimals','name').data);
+// will print out
+{
+    animal:{
+        items :  [ 
+            { category: 'animal', name: 'lion', weight: 80 },
+            { category: 'animal', name : 'panter', weight: 100 }
+        ]
+        distinctAnimals: 2
+    }
+}
+```
+# Chaining Operations
+Chaining operations are supported , it´s possible to chain more than one operation
+## example : 
+```
+const group = require('groupjs_by');
+const chainedResult = group.GroupBy(data,'category').distinctCount('distinctAnimals','name').avg('avgWeight','weight').sum('animalWeight','weight').data
 
-# returns 'grouped' objects by columnName
-`const data = [{ id: 1, category : 'fruits', name : 'apple', price: 10 }, 
-{ id:2, category: 'fruits', name: 'grapes', price : 30 }, 
-{ id:3, category: vegetables, name: 'avocado', price : 15 } ],`
-// passing an array of objects with a columnName category
-groups.group(data,'category')
-
-# returns 'sum' of price column for each category
-group.GroupBy(data,'category').sum('totalSum','price')
-
-# returns 'avg' price for each category, it support a third argument as number of decimals formatted by default its 2 
-group.GroupBy(data,'category').avg('totalAvg','price')
-
-# returns 'max'  price  for each category 
-group.GroupBy(data,'category').max('maxPrice','price')
-
-# returns 'min'  price for each category 
-group.GroupBy(data,'category').min('maxPrice','price')
-
-# countDistinct
-# returns 'count' of distinct prices
-group.GroupBy(data,'category').min('distinctPrices','price')
-
-# Chaining 
-groupjs_by support chaining operations
-group.GroupBy(data,'category').avg('totalAvg','price').sum('totalPrice','price').min('minPrice','price');
-
-
-## Contributing
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
-
-Please make sure to update tests as appropriate.
-
-## License
-[MIT](https://choosealicense.com/licenses/mit/)
+console.log(chainedResult.data)
+// will print out
+{
+    animal:{
+        items :  [ 
+            { category: 'animal', name: 'lion', weight: 80 },
+            { category: 'animal', name : 'panter', weight: 100 }
+        ]
+        distinctAnimals: 2,
+        avgWeight: '90.00',
+        animalWeight: 180
+    }
+}
+```

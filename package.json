@@ -1,6 +1,6 @@
 {
   "name": "groupjs_by",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Group an array of objects by property name",
   "main": "index.js",
   "repository": "https://github.com/juli04guilar/groupBy.git",
