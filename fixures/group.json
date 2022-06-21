@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Display",
+    "category": "General",
+    "id": "60",
+    "value": "4"
+  },
+  {
+    "name": "Manufacturer",
+    "category": "General",
+    "id": "58",
+    "value": "5"
+  },
+  {
+    "name": "OS",
+    "category": "Other",
+    "id": "37",
+    "value": "6"
+  }
+]

@@ -1,0 +1,28 @@
+{
+  "name": "group_by",
+  "version": "1.0.0",
+  "description": "Group an array of objects by property name",
+  "main": "index.js",
+  "repository": "https://github.com/juli04guilar/groupBy.git",
+  "author": "Julio Aguilar",
+  "license": "MIT",
+  "scripts": {
+    "test": "jest --coverage --watchAll",
+    "pretty": "prettier --write ."
+  },
+  "devDependencies": {
+    "jest": "^28.1.1",
+    "prettier": "2.7.1"
+  },
+  "jest": {
+    "coverageReporters": ["text","html"],
+    "coverageThreshold":{
+      "global":{
+        "branches": 95,
+        "functions": 100,
+        "lines": 100,
+        "statements": -10
+      }
+    }
+  }
+}

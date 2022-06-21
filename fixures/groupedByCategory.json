@@ -1,0 +1,28 @@
+{
+  "General": {
+    "items": [
+      {
+        "name": "Display",
+        "category": "General",
+        "id": "60",
+        "value": "4"
+      },
+      {
+        "name": "Manufacturer",
+        "category": "General",
+        "id": "58",
+        "value": "5"
+      }
+    ]
+  },
+  "Other": {
+    "items": [
+      {
+        "name": "OS",
+        "category": "Other",
+        "id": "37",
+        "value": "6"
+      }
+    ]
+  }
+}
