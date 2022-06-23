@@ -33,8 +33,12 @@
     "max",
     "avg",
     "groupBy",
+    "distinctCount",
+    "groupObjects",
     "array",
     "agrupar",
-    "sumar"
+    "sumar",
+    "promedio",
+    "contar"
   ]
 }

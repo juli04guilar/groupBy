@@ -35,7 +35,7 @@ console.log(group.GroupBy(data,'category').sum('animalWeight','weight').data);
 # min(alias,columnName)
 Operation | Parameters | description 
 --- | --- | --- 
-string | alias  | alias for the agreggation sum 
+string | alias  | alias for the agreggation min 
 string | columnName   | name of the column to get the min value
     
 ## example : 
@@ -58,7 +58,7 @@ console.log(group.GroupBy(data,'category').min('minWeight','weight').data);
 # max(alias,ColumnName)
 Operation | Parameters | description 
 --- | --- | --- 
-string | alias  | alias for the agreggation sum 
+string | alias  | alias for the agreggation max 
 string | columnName   | name of the column to get the max value 
     
 ## example : 
@@ -81,7 +81,7 @@ console.log(group.GroupBy(data,'category').max('maxWeight','weight').data);
 # avg(alias,columnName,decimals)
 Operation | Parameters | description 
 --- | --- | --- 
-string | alias  | alias for the agreggation sum 
+string | alias  | alias for the agreggation avg 
 string | columnName   | name of the column to get to perform the avg
 int | decimals   | The number of decimals to format the float avg value, by default 2
     
@@ -105,7 +105,7 @@ console.log(group.GroupBy(data,'category').avg('avgWeight','weight').data);
 # distinctCount(alias,columnName)
 Operation | Parameters | description 
 --- | --- | --- 
-string | alias  | alias for the agreggation sum 
+string | alias  | alias for the agreggation distinctCount 
 string | columnName   | name of the column to get to perform counting
 
     
