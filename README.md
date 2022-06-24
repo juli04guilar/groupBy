@@ -21,7 +21,7 @@ Use the package manager to install groupjs_by.
 const data = [
   { category: 'mammals', name: 'lion', weight: 80 },
   { category: 'mammals', name : 'panter', weight: 100 },
-  { category : 'reptiles', name : cocodrile, weight: 100}
+  { category : 'reptiles', name : 'cocodrile', weight: 100}
 ]
 ```
 
