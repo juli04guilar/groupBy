@@ -7,7 +7,7 @@
   "author": "Julio Aguilar",
   "license": "MIT",
   "scripts": {
-    "test": "jest --coverage --watchAll",
+    "test": "yarn pretty & jest --coverage --watchAll",
     "pretty": "prettier --write .",
     "prepare": "husky install"
   },

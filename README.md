@@ -1,6 +1,6 @@
 # GroupByJs
 
-GroupBy is a Node library for grouping array of objects using value of columnName passed as a parameter , it support sum, avg, max, min , countDistinct as well chaining operations
+GroupBy is a javascript library for grouping array of objects using attribute name , it support basic operations such as sum, avg, max, min and countDistinct. it support chaning more than one operation.
 
 ## Installation
 
@@ -15,21 +15,37 @@ Use the package manager to install groupjs_by.
 | string | alias      | alias for the agreggation sum                 |
 | string | columnName | name of the column to perform the aggregation |
 
-## example :
+## example using data :
 
-`const data = [ { category: 'animal', name: 'lion', weight: 80 }, { category: 'animal', name : 'panter', weight: 100 } ] `
+```
+const data = [
+  { category: 'mammals', name: 'lion', weight: 80 },
+  { category: 'mammals', name : 'panter', weight: 100 },
+  { category : 'reptiles', name : cocodrile, weight: 100}
+]
+```
 
 ```
 const group = require('groupjs_by');
-console.log(group.GroupBy(data,'category').sum('animalWeight','weight').data);
-// will print out
+group
+.GroupBy(data,'category')
+.sum('animalsWeight','weight')
+.data;
+
+// will return
 {
-    animal:{
+    mammals:{
         items :  [
-            { category: 'animal', name: 'lion', weight: 80 },
-            { category: 'animal', name : 'panter', weight: 100 }
-        ]
-        animalWeight: 180
+            { category: 'mammals', name: 'lion', weight: 80 },
+            { category: 'mammals', name : 'panter', weight: 100 }
+        ],
+        animalsWeight: 180
+    },
+    reptiles: {
+        items : [
+            { category : 'reptiles', name : cocodrile, weight: 100}
+        ],
+        animalsWeight: 100
     }
 }
 ```
@@ -43,19 +59,27 @@ console.log(group.GroupBy(data,'category').sum('animalWeight','weight').data);
 
 ## example :
 
-`const list = [ { category: 'animal', name: 'lion', weight: 80 }, { category: 'animal', name : 'panter', weight: 100 } ] `
-
 ```
 const group = require('groupjs_by');
-console.log(group.GroupBy(data,'category').min('minWeight','weight').data);
-// will print out
+group.GroupBy(data,'category')
+.min('minWeight','weight')
+.data;
+
+// will return
+
 {
-    animal:{
+    mammals:{
         items :  [
-            { category: 'animal', name: 'lion', weight: 80 },
-            { category: 'animal', name : 'panter', weight: 100 }
+            { category: 'mammals', name: 'lion', weight: 80 },
+            { category: 'mammals', name : 'panter', weight: 100 }
         ]
         minWeight: 80
+    },
+    reptiles: {
+        items : [
+            { category : 'reptiles', name : cocodrile, weight: 100}
+        ],
+        minWeight: 100
     }
 }
 ```
@@ -69,18 +93,26 @@ console.log(group.GroupBy(data,'category').min('minWeight','weight').data);
 
 ## example :
 
-`const list = [ { category: 'animal', name: 'lion', weight: 80 }, { category: 'animal', name : 'panter', weight: 100 } ] `
-
 ```
 const group = require('groupjs_by');
-console.log(group.GroupBy(data,'category').max('maxWeight','weight').data);
-// will print out
+group.GroupBy(data,'category')
+.max('maxWeight','weight')
+.data;
+
+// will return
+
 {
-    animal:{
+    mammals:{
         items :  [
-            { category: 'animal', name: 'lion', weight: 80 },
-            { category: 'animal', name : 'panter', weight: 100 }
+            { category: 'mammals', name: 'lion', weight: 80 },
+            { category: 'mammals', name : 'panter', weight: 100 }
         ]
+        maxWeight: 100
+    },
+    reptiles: {
+        items : [
+            { category : 'reptiles', name : cocodrile, weight: 100}
+        ],
         maxWeight: 100
     }
 }
@@ -96,19 +128,27 @@ console.log(group.GroupBy(data,'category').max('maxWeight','weight').data);
 
 ## example :
 
-`const list = [ { category: 'animal', name: 'lion', weight: 80 }, { category: 'animal', name : 'panter', weight: 100 } ] `
-
 ```
 const group = require('groupjs_by');
-console.log(group.GroupBy(data,'category').avg('avgWeight','weight').data);
-// will print out
+group
+.GroupBy(data,'category')
+.avg('avgWeight','weight').data;
+
+// will return
+
 {
-    animal:{
+    mammals:{
         items :  [
-            { category: 'animal', name: 'lion', weight: 80 },
-            { category: 'animal', name : 'panter', weight: 100 }
+            { category: 'mammals', name: 'lion', weight: 80 },
+            { category: 'mammals', name : 'panter', weight: 100 }
         ]
         avgWeight: '90.00'
+    },
+    reptiles: {
+        items : [
+            { category : 'reptiles', name : cocodrile, weight: 100}
+        ],
+        avgWeight: '100.00'
     }
 }
 ```
@@ -122,19 +162,28 @@ console.log(group.GroupBy(data,'category').avg('avgWeight','weight').data);
 
 ## example :
 
-`const list = [ { category: 'animal', name: 'lion', weight: 80 }, { category: 'animal', name : 'panter', weight: 100 } ] `
-
 ```
 const group = require('groupjs_by');
-console.log(group.GroupBy(data,'category').distinctCount('distinctAnimals','name').data);
-// will print out
+group
+.GroupBy(data,'category')
+.distinctCount('distinctAnimals','name')
+.data
+
+// will return
+
 {
-    animal:{
+    mammals:{
         items :  [
-            { category: 'animal', name: 'lion', weight: 80 },
-            { category: 'animal', name : 'panter', weight: 100 }
+            { category: 'mammals', name: 'lion', weight: 80 },
+            { category: 'mammals', name : 'panter', weight: 100 }
         ]
         distinctAnimals: 2
+    },
+    reptiles: {
+        items : [
+            { category : 'reptiles', name : cocodrile, weight: 100}
+        ],
+        distinctAnimals: 1
     }
 }
 ```
@@ -147,19 +196,83 @@ Chaining operations are supported , it´s possible to chain more than one operat
 
 ```
 const group = require('groupjs_by');
-const chainedResult = group.GroupBy(data,'category').distinctCount('distinctAnimals','name').avg('avgWeight','weight').sum('animalWeight','weight').data
+const chainedResult =
+group
+.GroupBy(data,'category')
+.distinctCount('distinctAnimals','name')
+.avg('avgWeight','weight')
+.sum('animalsWeight','weight').data
 
-console.log(chainedResult.data)
-// will print out
+// will return
 {
-    animal:{
+    mammals:{
         items :  [
-            { category: 'animal', name: 'lion', weight: 80 },
-            { category: 'animal', name : 'panter', weight: 100 }
+            { category: 'mammals', name: 'lion', weight: 80 },
+            { category: 'mammals', name : 'panter', weight: 100 }
         ]
         distinctAnimals: 2,
         avgWeight: '90.00',
-        animalWeight: 180
+        animalsWeight: 180
+    },
+    reptiles: {
+        items : [
+            { category : 'reptiles', name : cocodrile, weight: 100}
+        ],
+        distinctAnimals: 1,
+        avgWeight: '100.00',
+        animalsWeight: 100
     }
 }
+```
+
+# keys
+
+To retrieve the list of keys of which the object is grouped
+
+```
+const group = require('groupjs_by');
+group
+.GroupBy(data,'category')
+.keys
+
+// will return an array of keys of grouped data.
+ ex:
+ ['mammals','reptiles']
+```
+
+# firstGroup
+
+Returns the first group of aggregate data , the order its determinaded by the order of data was provided.
+
+```
+const group = require('groupjs_by');
+group
+.GroupBy(data,'category')
+.firstGroup
+
+will return
+
+ ex:
+ [
+     { category: 'mammals', name: 'lion', weight: 80 },
+     { category: 'mammals', name : 'panter', weight: 100 }
+ ]
+```
+
+# lastGroup
+
+Returns the last group of aggregate data , the order its determinaded by the order of data was provided.
+
+```
+const group = require('groupjs_by');
+group
+.GroupBy(data,'category')
+.lastGroup
+
+will return
+
+ ex:
+ [
+     { category : 'reptiles', name : cocodrile, weight: 100}
+ ]
 ```
