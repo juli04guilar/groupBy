@@ -1,6 +1,6 @@
 {
   "name": "groupjs_by",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "The Javascript library used for aggregate on array of objects",
   "main": "index.js",
   "repository": "https://github.com/juli04guilar/groupBy.git",

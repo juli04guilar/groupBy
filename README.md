@@ -1,6 +1,6 @@
-# GroupByJs
+# groupByJs
 
-GroupBy is a javascript library for grouping array of objects using attribute name , it support basic operations such as sum, avg, max, min and countDistinct. it support chaning more than one operation.
+groupBy is a javascript library for grouping array of objects using attribute name , it support basic operations such as sum, avg, max, min and countDistinct. it support chaning more than one operation.
 
 ## Installation
 
@@ -28,7 +28,7 @@ const data = [
 ```
 const group = require('groupjs_by');
 group
-.GroupBy(data,'category')
+.groupBy(data,'category')
 .sum('animalsWeight','weight')
 .data;
 
@@ -61,7 +61,7 @@ group
 
 ```
 const group = require('groupjs_by');
-group.GroupBy(data,'category')
+group.groupBy(data,'category')
 .min('minWeight','weight')
 .data;
 
@@ -95,7 +95,7 @@ group.GroupBy(data,'category')
 
 ```
 const group = require('groupjs_by');
-group.GroupBy(data,'category')
+group.groupBy(data,'category')
 .max('maxWeight','weight')
 .data;
 
@@ -131,7 +131,7 @@ group.GroupBy(data,'category')
 ```
 const group = require('groupjs_by');
 group
-.GroupBy(data,'category')
+.groupBy(data,'category')
 .avg('avgWeight','weight').data;
 
 // will return
@@ -165,7 +165,7 @@ group
 ```
 const group = require('groupjs_by');
 group
-.GroupBy(data,'category')
+.groupBy(data,'category')
 .distinctCount('distinctAnimals','name')
 .data
 
@@ -198,7 +198,7 @@ Chaining operations are supported , it´s possible to chain more than one operat
 const group = require('groupjs_by');
 const chainedResult =
 group
-.GroupBy(data,'category')
+.groupBy(data,'category')
 .distinctCount('distinctAnimals','name')
 .avg('avgWeight','weight')
 .sum('animalsWeight','weight').data
@@ -232,7 +232,7 @@ To retrieve the list of keys of which the object is grouped
 ```
 const group = require('groupjs_by');
 group
-.GroupBy(data,'category')
+.groupBy(data,'category')
 .keys
 
 // will return an array of keys of grouped data.
@@ -247,7 +247,7 @@ Returns the first group of aggregate data , the order its determinaded by the or
 ```
 const group = require('groupjs_by');
 group
-.GroupBy(data,'category')
+.groupBy(data,'category')
 .firstGroup
 
 will return
@@ -266,7 +266,7 @@ Returns the last group of aggregate data , the order its determinaded by the ord
 ```
 const group = require('groupjs_by');
 group
-.GroupBy(data,'category')
+.groupBy(data,'category')
 .lastGroup
 
 will return
