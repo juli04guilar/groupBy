@@ -5,8 +5,8 @@ name: Node.js Package
 
 on:
   push:
-    branches: 
-     - master
+    branches:
+      - master
 
 jobs:
   build:
@@ -16,9 +16,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 14
-      - run: npm install
-      - run: npm test
-
+      - run: npm install & npm test
   publish-npm:
     needs: build
     runs-on: ubuntu-latest
