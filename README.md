@@ -1,6 +1,10 @@
-# groupByJs
+# groupjs_by  🚀
 
-groupBy is a javascript library for grouping array of objects using attribute name , it support basic operations such as sum, avg, max, min and countDistinct. it support chaning more than one operation.
+[![Publish](https://github.com/juli04guilar/groupBy/actions/workflows/publish.yml/badge.svg?branch=master)](https://github.com/juli04guilar/groupBy/actions/workflows/publish.yml)
+
+
+
+groupjs_by is a javascript library for grouping array of objects using attribute name , it support basic operations such as sum, avg, max, min and countDistinct. it support chaning more than one operation.
 
 ## Installation
 
