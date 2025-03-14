@@ -1,3 +1,5 @@
+[npm package](https://www.npmjs.com/package/groupjs_by)
+
 # groupjs_by  🚀
 
 [![Publish](https://github.com/juli04guilar/groupBy/actions/workflows/publish.yml/badge.svg?branch=master)](https://github.com/juli04guilar/groupBy/actions/workflows/publish.yml)
