@@ -6,7 +6,7 @@
 
 
 
-groupjs_by is a javascript library for grouping array of objects using attribute name , it support basic operations such as sum, avg, max, min and countDistinct. it support chaning more than one operation.
+groupjs_by is a JavaScript library that groups arrays of objects based on a specified attribute. It supports basic operations such as sum, average, maximum, minimum, and countDistinct, and allows chaining of multiple operations.
 
 ## Installation
 
