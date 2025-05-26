@@ -1,158 +1,212 @@
-
-[npm package](https://www.npmjs.com/package/groupjs_by)
-
-# groupjs_by 🚀
+# groupjs_by
 
 [![Publish](https://github.com/juli04guilar/groupBy/actions/workflows/publish.yml/badge.svg?branch=master)](https://github.com/juli04guilar/groupBy/actions/workflows/publish.yml)
 
-**groupjs_by** is a lightweight JavaScript utility for grouping arrays of objects by a specific attribute. It supports powerful aggregation methods such as `sum`, `average`, `min`, `max`, and `distinctCount`, with full support for method chaining.
+**`groupjs_by`** is a lightweight and flexible JavaScript library for grouping arrays of objects by a specific field and performing aggregated operations such as `sum`, `average`, `min`, `max`, and `distinct count`. The API supports method chaining for expressive and readable data transformations.
 
----
+----------
 
 ## 📦 Installation
 
-Install using your preferred package manager:
+Install the package via [npm](https://www.npmjs.com/package/groupjs_by):
 
-```bash
-npm install groupjs_by
-```
+bash
 
----
+CopyEdit
 
-## 🚀 Usage
+`npm install groupjs_by` 
 
-### 🔢 sum(alias, columnName)
+----------
 
-Aggregates the sum of values in the specified column.
+## ✨ Features
 
-| Parameter   | Type   | Description                                |
-|------------|--------|--------------------------------------------|
-| `alias`    | string | Alias for the aggregation result           |
-| `columnName` | string | Column name to perform the summation on    |
+-   Group objects by a specific key
+    
+-   Aggregate with:
+    
+    -   `sum`
+        
+    -   `avg`
+        
+    -   `min`
+        
+    -   `max`
+        
+    -   `distinctCount`
+        
+-   Chain multiple operations
+    
+-   Filter groups with `where`
+    
+-   Access group metadata (`keys`, `firstGroup`, `lastGroup`)
+    
 
-**Example:**
+----------
 
-```js
-const data = [
+## 📘 Usage Example
+
+js
+
+CopyEdit
+
+`const group = require('groupjs_by'); const data = [
   { category: 'mammals', name: 'lion', weight: 80 },
   { category: 'mammals', name: 'panther', weight: 100 },
-  { category: 'reptiles', name: 'crocodile', weight: 100 }
-];
-
-const group = require('groupjs_by');
-const result = group
+  { category: 'reptiles', name: 'crocodile', weight: 100 },
+]; const result = group
   .groupBy(data, 'category')
   .sum('totalWeight', 'weight')
-  .data;
-
-// Result:
-{
-  mammals: {
-    items: [...],
-    totalWeight: 180
-  },
-  reptiles: {
-    items: [...],
-    totalWeight: 100
-  }
-}
-```
-
----
-
-### 📉 min(alias, columnName)
-
-Finds the minimum value in the specified column.
-
-| Parameter   | Type   | Description                              |
-|------------|--------|------------------------------------------|
-| `alias`    | string | Alias for the minimum value              |
-| `columnName` | string | Column name to evaluate for minimum value |
-
----
-
-### 📈 max(alias, columnName)
-
-Finds the maximum value in the specified column.
-
-| Parameter   | Type   | Description                              |
-|------------|--------|------------------------------------------|
-| `alias`    | string | Alias for the maximum value              |
-| `columnName` | string | Column name to evaluate for maximum value |
-
----
-
-### 📊 avg(alias, columnName, decimals)
-
-Calculates the average of a column, formatted to a specific number of decimals.
-
-| Parameter   | Type   | Description                                                    |
-|------------|--------|----------------------------------------------------------------|
-| `alias`    | string | Alias for the average value                                    |
-| `columnName` | string | Column name to evaluate for average                           |
-| `decimals` | number | Optional: Number of decimal places (default: 2)                |
-
----
-
-### 🔢 distinctCount(alias, columnName)
-
-Counts distinct values in a specified column.
-
-| Parameter   | Type   | Description                              |
-|------------|--------|------------------------------------------|
-| `alias`    | string | Alias for the distinct count             |
-| `columnName` | string | Column name to evaluate for uniqueness   |
-
----
-
-## 🔗 Chaining Operations
-
-You can chain multiple operations in a single expression:
-
-```js
-const result = group
-  .groupBy(data, 'category')
+  .avg('averageWeight', 'weight')
   .distinctCount('uniqueAnimals', 'name')
-  .avg('avgWeight', 'weight')
-  .sum('totalWeight', 'weight')
-  .data;
-```
+  .data; console.log(result);` 
 
----
+### Output:
 
-## 🗝️ Utility Methods
+js
 
-### `keys`
+CopyEdit
 
-Returns an array of all group keys:
+`{ mammals: { items: [
+      { category: 'mammals', name: 'lion', weight: 80 },
+      { category: 'mammals', name: 'panther', weight: 100 }
+    ], totalWeight: 180, averageWeight: '90.00', uniqueAnimals: 2 }, reptiles: { items: [
+      { category: 'reptiles', name: 'crocodile', weight: 100 }
+    ], totalWeight: 100, averageWeight: '100.00', uniqueAnimals: 1 }
+}` 
 
-```js
-group.groupBy(data, 'category').keys;
-// ['mammals', 'reptiles']
-```
+----------
 
-### `firstGroup`
+## 🧩 API Reference
 
-Returns the first grouped data based on original order:
+### `groupBy(data, key)`
 
-```js
-group.groupBy(data, 'category').firstGroup;
-```
+Initializes the grouping operation on the provided data using the specified key.
 
-### `lastGroup`
+----------
 
-Returns the last grouped data based on original order:
+### `.sum(alias, columnName)`
 
-```js
-group.groupBy(data, 'category').lastGroup;
-```
+Computes the sum of a numeric field within each group.
 
----
 
-## 📚 License
+| Parameter    | Type   | Description                      |
+|--------------|--------|----------------------------------|
+| `alias`      | string | Output field name for the result |
+| `columnName` | string | Field to aggregate               |
 
-MIT
 
----
+----------
 
-For more information and updates, check out the [npm package page](https://www.npmjs.com/package/groupjs_by).
+### `.avg(alias, columnName, decimals = 2)`
+
+
+| Parameter    | Type   | Description                                |
+|--------------|--------|--------------------------------------------|
+| `alias`      | string | Output field name for the result           |
+| `columnName` | string | Field to aggregate                         |
+| `decimals`   | number | Number of decimal places (default: `2`)    |
+
+
+----------
+
+### `.min(alias, columnName)`
+
+| Parameter    | Type   | Description                      |
+|--------------|--------|----------------------------------|
+| `alias`      | string | Output field name for the result |
+| `columnName` | string | Field to evaluate                |
+
+----------
+
+### `.max(alias, columnName)`
+
+Finds the maximum value in a field for each group.
+
+| Parameter    | Type   | Description                      |
+|--------------|--------|----------------------------------|
+| `alias`      | string | Output field name for the result |
+| `columnName` | string | Field to evaluate                |
+
+----------
+
+### `.distinctCount(alias, columnName)`
+
+Counts the number of unique values in a field within each group.
+
+| Parameter    | Type   | Description                      |
+|--------------|--------|----------------------------------|
+| `alias`      | string | Output field name for the result |
+| `columnName` | string | Field to evaluate                |
+
+
+----------
+
+### `.where(predicate)`
+
+Filters grouped data using a custom predicate function before applying aggregations.
+
+| Parameter    | Type   | Description                      |
+|--------------|--------|----------------------------------|
+| `callback`   | function | custom predicate callback function |
+        
+
+js
+
+CopyEdit
+
+`group
+  .groupBy(data, 'category')
+  .where(item => item.weight > 90)
+  .sum('heavyWeight', 'weight')
+  .data;` 
+
+----------
+
+## 🔧 Utility Properties
+
+### `.data`
+
+Returns the final aggregated result as an object grouped by keys.
+
+----------
+
+### `.keys`
+
+Returns an array of group keys.
+
+js
+
+CopyEdit
+
+`group.groupBy(data, 'category').keys; // ➜ ['mammals', 'reptiles']` 
+
+----------
+
+### `.firstGroup`
+
+Returns the items in the first group, based on the order of the original array.
+
+js
+
+CopyEdit
+
+`group.groupBy(data, 'category').firstGroup;` 
+
+----------
+
+### `.lastGroup`
+
+Returns the items in the last group, based on the order of the original array.
+
+js
+
+CopyEdit
+
+`group.groupBy(data, 'category').lastGroup;` 
+
+----------
+
+## 📄 License
+
+This project is licensed under the MIT License.  
+Created by [@juli04guilar](https://github.com/juli04guilar)
