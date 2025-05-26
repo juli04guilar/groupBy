@@ -12,7 +12,7 @@ Install the package via [npm](https://www.npmjs.com/package/groupjs_by):
 
 bash
 
-CopyEdit
+
 
 `npm install groupjs_by` 
 
@@ -47,9 +47,9 @@ CopyEdit
 
 js
 
-CopyEdit
 
-`const group = require('groupjs_by'); const data = [
+```
+const group = require('groupjs_by'); const data = [
   { category: 'mammals', name: 'lion', weight: 80 },
   { category: 'mammals', name: 'panther', weight: 100 },
   { category: 'reptiles', name: 'crocodile', weight: 100 },
@@ -58,21 +58,22 @@ CopyEdit
   .sum('totalWeight', 'weight')
   .avg('averageWeight', 'weight')
   .distinctCount('uniqueAnimals', 'name')
-  .data; console.log(result);` 
+  .data; console.log(result);
+```
+
 
 ### Output:
 
-js
-
-CopyEdit
-
-`{ mammals: { items: [
+```
+{ mammals: { items: [
       { category: 'mammals', name: 'lion', weight: 80 },
       { category: 'mammals', name: 'panther', weight: 100 }
     ], totalWeight: 180, averageWeight: '90.00', uniqueAnimals: 2 }, reptiles: { items: [
       { category: 'reptiles', name: 'crocodile', weight: 100 }
     ], totalWeight: 100, averageWeight: '100.00', uniqueAnimals: 1 }
-}` 
+} 
+
+```
 
 ----------
 
@@ -152,7 +153,7 @@ Filters grouped data using a custom predicate function before applying aggregati
 
 js
 
-CopyEdit
+
 
 `group
   .groupBy(data, 'category')
@@ -176,7 +177,7 @@ Returns an array of group keys.
 
 js
 
-CopyEdit
+
 
 `group.groupBy(data, 'category').keys; // ➜ ['mammals', 'reptiles']` 
 
@@ -188,7 +189,7 @@ Returns the items in the first group, based on the order of the original array.
 
 js
 
-CopyEdit
+
 
 `group.groupBy(data, 'category').firstGroup;` 
 
@@ -200,7 +201,7 @@ Returns the items in the last group, based on the order of the original array.
 
 js
 
-CopyEdit
+
 
 `group.groupBy(data, 'category').lastGroup;` 
 
@@ -209,4 +210,4 @@ CopyEdit
 ## 📄 License
 
 This project is licensed under the MIT License.  
-Created by [@juli04guilar](https://github.com/juli04guilar)
+Created by [@Julio Aguilar](https://github.com/juli04guilar)
